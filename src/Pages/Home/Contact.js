@@ -1,5 +1,6 @@
 import React from 'react';
 import appointment from '../../assets/images/appointment.png';
+import PrimaryBtn from '../Shared/PrimaryBtn';
 const Contact = () => {
     return (
         <div style={{
@@ -27,7 +28,7 @@ const Contact = () => {
                     placeholder='Your message'
                     rows={5}
                 ></textarea>
-                <button className="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary">Get Started</button>
+                <PrimaryBtn></PrimaryBtn>
             </div>
         </div>
     );
