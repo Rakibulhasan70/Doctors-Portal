@@ -29,6 +29,7 @@ const AvailableAppoinments = ({ date }) => {
             {treatment && <BookingModal
                 date={date}
                 treatment={treatment}
+                // jokhn submit e click krbe tkhn data gula show kore auto modal close hye jabe
                 setTreatment={setTreatment}
             ></BookingModal>}
         </div>
