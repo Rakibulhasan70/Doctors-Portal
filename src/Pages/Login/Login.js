@@ -4,6 +4,7 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-fireba
 import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useToken from '../../Hooks/UseToken';
 
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -18,6 +19,8 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [token] = useToken(user || gUser)
+
 
     let signInError
 
@@ -28,10 +31,10 @@ const Login = () => {
 
     //useEffect use korar krn holo rendering warning solution kora. 
     useEffect(() => {
-        if (user || gUser) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user, gUser, from, navigate])
+    }, [token, from, navigate])
 
 
 
@@ -97,7 +100,7 @@ const Login = () => {
                                         message: 'Password is require'
                                     },
                                     minLength: {
-                                        value: +6,
+                                        value: 6,
                                         message: 'Must be six character or longer'
                                     }
                                 })}
